@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		57E85E8F2091DA4600CEEFE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85E8E2091DA4600CEEFE7 /* AppDelegate.swift */; };
-		57E85E912091DA4600CEEFE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85E902091DA4600CEEFE7 /* ViewController.swift */; };
-		57E85E942091DA4600CEEFE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57E85E922091DA4600CEEFE7 /* Main.storyboard */; };
+		57E85E912091DA4600CEEFE7 /* BlueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85E902091DA4600CEEFE7 /* BlueViewController.swift */; };
 		57E85E962091DA4800CEEFE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E85E952091DA4800CEEFE7 /* Assets.xcassets */; };
 		57E85E992091DA4800CEEFE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57E85E972091DA4800CEEFE7 /* LaunchScreen.storyboard */; };
+		57E85EA12091DAB500CEEFE7 /* GreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85EA02091DAB500CEEFE7 /* GreenViewController.swift */; };
+		57E85EA32091DD1900CEEFE7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85EA22091DD1900CEEFE7 /* BaseViewController.swift */; };
+		57E85EA52091DDB200CEEFE7 /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85EA42091DDB200CEEFE7 /* RedViewController.swift */; };
+		57E85EA72091E8E000CEEFE7 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85EA62091E8E000CEEFE7 /* Reducer.swift */; };
+		57E85EA920920F2B00CEEFE7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85EA820920F2B00CEEFE7 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		57E85E8B2091DA4600CEEFE7 /* Reducing Reducer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reducing Reducer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57E85E8E2091DA4600CEEFE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		57E85E902091DA4600CEEFE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		57E85E932091DA4600CEEFE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		57E85E902091DA4600CEEFE7 /* BlueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueViewController.swift; sourceTree = "<group>"; };
 		57E85E952091DA4800CEEFE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57E85E982091DA4800CEEFE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57E85E9A2091DA4800CEEFE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57E85EA02091DAB500CEEFE7 /* GreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenViewController.swift; sourceTree = "<group>"; };
+		57E85EA22091DD1900CEEFE7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		57E85EA42091DDB200CEEFE7 /* RedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
+		57E85EA62091E8E000CEEFE7 /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		57E85EA820920F2B00CEEFE7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +63,15 @@
 			isa = PBXGroup;
 			children = (
 				57E85E8E2091DA4600CEEFE7 /* AppDelegate.swift */,
-				57E85E902091DA4600CEEFE7 /* ViewController.swift */,
-				57E85E922091DA4600CEEFE7 /* Main.storyboard */,
 				57E85E952091DA4800CEEFE7 /* Assets.xcassets */,
-				57E85E972091DA4800CEEFE7 /* LaunchScreen.storyboard */,
+				57E85EA22091DD1900CEEFE7 /* BaseViewController.swift */,
+				57E85E902091DA4600CEEFE7 /* BlueViewController.swift */,
+				57E85EA02091DAB500CEEFE7 /* GreenViewController.swift */,
 				57E85E9A2091DA4800CEEFE7 /* Info.plist */,
+				57E85E972091DA4800CEEFE7 /* LaunchScreen.storyboard */,
+				57E85EA62091E8E000CEEFE7 /* Reducer.swift */,
+				57E85EA820920F2B00CEEFE7 /* Router.swift */,
+				57E85EA42091DDB200CEEFE7 /* RedViewController.swift */,
 			);
 			path = "Reducing Reducer";
 			sourceTree = "<group>";
@@ -124,7 +136,6 @@
 			files = (
 				57E85E992091DA4800CEEFE7 /* LaunchScreen.storyboard in Resources */,
 				57E85E962091DA4800CEEFE7 /* Assets.xcassets in Resources */,
-				57E85E942091DA4600CEEFE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +146,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57E85E912091DA4600CEEFE7 /* ViewController.swift in Sources */,
+				57E85EA52091DDB200CEEFE7 /* RedViewController.swift in Sources */,
+				57E85EA12091DAB500CEEFE7 /* GreenViewController.swift in Sources */,
+				57E85EA72091E8E000CEEFE7 /* Reducer.swift in Sources */,
+				57E85EA920920F2B00CEEFE7 /* Router.swift in Sources */,
+				57E85EA32091DD1900CEEFE7 /* BaseViewController.swift in Sources */,
+				57E85E912091DA4600CEEFE7 /* BlueViewController.swift in Sources */,
 				57E85E8F2091DA4600CEEFE7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,14 +159,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		57E85E922091DA4600CEEFE7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				57E85E932091DA4600CEEFE7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		57E85E972091DA4800CEEFE7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
