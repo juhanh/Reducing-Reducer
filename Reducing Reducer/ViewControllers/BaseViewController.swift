@@ -1,7 +1,7 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-    var model: Model
+    private let model: Model
     private let bindings: Bindings
 
     private var button: UIButton = {
@@ -65,7 +65,7 @@ class BaseViewController: UIViewController {
     }
 
     @objc func action() {
-        bindings.go(textField.text)
+        bindings.go(textField.text!)
     }
 
     func clear() {

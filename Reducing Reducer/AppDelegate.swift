@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         reducer.route(instruction: .start)
 
-        // Override point for customization after application launch.
         return true
     }
 }

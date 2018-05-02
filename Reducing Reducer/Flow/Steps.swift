@@ -1,55 +1,80 @@
 import Foundation
 
 protocol Step {
-    associatedtype State
+    associatedtype CurrentState
+    associatedtype Input
 
-    static func process(state: State?, callback: @escaping (Instruction) -> ()) -> (command: Command, state: State?)
+    static func process(input: Input, state: CurrentState, callback: @escaping (Instruction) -> ()) -> (command: Command, state: CurrentState)
+}
+
+protocol Model {
+    var text: String { get }
+}
+
+class DoneModel: Model {
+    let text: String
+
+    init(text: String) {
+        self.text = text
+    }
+}
+
+class StartStep: Step {
+    typealias CurrentState = State
+    typealias Input = String
+
+    static func process(input: String, state: State, callback: @escaping (Instruction) -> ()) -> (command: Command, state: State) {
+        let model = state.startModel
+        let bindings = Bindings(go: { callback(.blue(previous: $0)) })
+        return (command: .showBlue(model: model, bindings: bindings), state)
+    }
 }
 
 class BlueStep: Step {
-    typealias State = String
+    typealias CurrentState = State
+    typealias Input = String
 
-    static func process(state: String?, callback: @escaping (Instruction) -> ()) -> (command: Command, state: String?) {
-        if let p = state, !p.isEmpty {
-            let model = Model(text: "Oh, you shouldn't have \(p)")
+    static func process(input: String, state: State, callback: @escaping (Instruction) -> ()) -> (command: Command, state: State) {
+        var mutableState = state
+        mutableState.blue = input
+        if let model = mutableState.redModel {
             let bindings = Bindings(go: { callback(.red(previous: $0)) })
-            return (command: .showRed(model: model, bindings: bindings), nil)
+            return (command: .showRed(model: model, bindings: bindings), state: mutableState)
         } else {
-            let model = Model(text: "Hello there")
-            let bindings = Bindings(go: { callback(.blue(previous: $0)) })
-            return (command: .showBlue(model: model, bindings: bindings), nil)
+            return (command: .noop, state: mutableState)
         }
     }
 }
 
 class RedStep: Step {
-    typealias State = String
+    typealias CurrentState = State
+    typealias Input = String
 
-    static func process(state: String?, callback: @escaping (Instruction) -> ()) -> (command: Command, state: String?) {
-        if let p = state, !p.isEmpty {
-            let model = Model(text: "Really? \(p)")
+    static func process(input: String, state: State, callback: @escaping (Instruction) -> ()) -> (command: Command, state: State) {
+        var mutableState = state
+        mutableState.red = input
+        if let model = mutableState.greenModel {
             let bindings = Bindings {
                 callback(.green(previous: $0))
             }
-            return (command: .showGreen(model: model, bindings: bindings), nil)
+            return (command: .showGreen(model: model, bindings: bindings), state: mutableState)
         } else {
-            return (command: .restart(model: Model(text: "Hello there")), nil)
+            return (command: .noop, state: mutableState)
         }
     }
 }
 
 class GreenStep: Step {
-    typealias State = String
+    typealias CurrentState = State
+    typealias Input = String
 
-    static func process(state: String?, callback: @escaping (Instruction) -> ()) -> (command: Command, state: String?) {
-        if let p = state, !p.isEmpty {
-            let model = Model(text: "Way cool! \(p)")
-            let bindings = Bindings { _ in
-                callback(.done)
-            }
-            return (command: .showGreen(model: model, bindings: bindings), nil)
+    static func process(input: String, state: State, callback: @escaping (Instruction) -> ()) -> (command: Command, state: State) {
+        var mutableState = state
+        mutableState.green = input
+        if let model = mutableState.doneModel {
+            return (command: .done(model: model), state: mutableState)
         } else {
-            return (command: .restart(model: Model(text: "Hello there")), nil)
+            return (command: .noop, state: mutableState)
         }
     }
 }

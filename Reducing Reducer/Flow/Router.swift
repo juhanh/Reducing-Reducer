@@ -2,11 +2,11 @@ import Foundation
 import UIKit
 
 enum Command {
-    case restart(model: Model)
+    case noop
     case showBlue(model: Model, bindings: Bindings)
     case showRed(model: Model, bindings: Bindings)
     case showGreen(model: Model, bindings: Bindings)
-    case done
+    case done(model: Model)
 }
 
 class Router {
@@ -19,10 +19,8 @@ class Router {
 
     func process(command: Command) {
         switch command {
-        case let .restart(model):
-            blue.model = model
-            blue.clear()
-            navigationController.popToViewController(blue, animated: true)
+        case .noop:
+            return
         case let .showBlue(model, bindings):
             let model = BlueModel(text: model.text)
             let bindings = BlueBindings(go: bindings.go)
@@ -38,8 +36,12 @@ class Router {
             let bindings = GreenBindings(go: bindings.go)
             let vc = GreenViewController(model: model, bindings: bindings)
             navigationController.pushViewController(vc, animated: true)
-        case .done:
-            navigationController.popToRootViewController(animated: true)
+        case let .done(model):
+            let alert = UIAlertController(title: "Done!", message: model.text, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.navigationController.popToRootViewController(animated: true)
+            }))
+            navigationController.present(alert, animated: true, completion: nil)
         }
     }
 }
