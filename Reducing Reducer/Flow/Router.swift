@@ -1,8 +1,9 @@
 import Foundation
 import UIKit
 
-enum Command {
+enum RoutingCommand {
     case noop
+    case showLoader
     case showBlue(model: Model, bindings: Bindings)
     case showRed(model: Model, bindings: Bindings)
     case showGreen(model: Model, bindings: Bindings)
@@ -11,20 +12,24 @@ enum Command {
 
 class Router {
     private let navigationController: UINavigationController
-    private var blue: BlueViewController!
+    private var loader: LoaderViewController?
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
 
-    func process(command: Command) {
+    func route(command: RoutingCommand) {
         switch command {
         case .noop:
             return
+        case .showLoader:
+            loader = LoaderViewController()
+            loader?.modalTransitionStyle = .crossDissolve
+            navigationController.present(loader!, animated: true, completion: nil)
         case let .showBlue(model, bindings):
             let model = BlueModel(text: model.text)
             let bindings = BlueBindings(go: bindings.go)
-            blue = BlueViewController(model: model, bindings: bindings)
+            let blue = BlueViewController(model: model, bindings: bindings)
             navigationController.pushViewController(blue, animated: true)
         case let .showRed(model, bindings):
             let model = RedModel(text: model.text)
@@ -37,6 +42,9 @@ class Router {
             let vc = GreenViewController(model: model, bindings: bindings)
             navigationController.pushViewController(vc, animated: true)
         case let .done(model):
+            if let loader = loader {
+                loader.dismiss(animated: true, completion: nil)
+            }
             let alert = UIAlertController(title: "Done!", message: model.text, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                 self.navigationController.popToRootViewController(animated: true)

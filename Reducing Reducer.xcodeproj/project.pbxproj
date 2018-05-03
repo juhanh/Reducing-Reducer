@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5776D4AC2099408200F1399E /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5776D4AB2099408200F1399E /* State.swift */; };
+		57DAD62520997AAB0047578C /* LoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DAD62420997AAB0047578C /* LoaderViewController.swift */; };
+		57DAD627209982860047578C /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DAD626209982860047578C /* Loader.swift */; };
 		57E85E8F2091DA4600CEEFE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85E8E2091DA4600CEEFE7 /* AppDelegate.swift */; };
 		57E85E912091DA4600CEEFE7 /* BlueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85E902091DA4600CEEFE7 /* BlueViewController.swift */; };
 		57E85E962091DA4800CEEFE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E85E952091DA4800CEEFE7 /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		5776D4AB2099408200F1399E /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		57DAD62420997AAB0047578C /* LoaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderViewController.swift; sourceTree = "<group>"; };
+		57DAD626209982860047578C /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		57E85E8B2091DA4600CEEFE7 /* Reducing Reducer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reducing Reducer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57E85E8E2091DA4600CEEFE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57E85E902091DA4600CEEFE7 /* BlueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				57E85E902091DA4600CEEFE7 /* BlueViewController.swift */,
 				57E85EA02091DAB500CEEFE7 /* GreenViewController.swift */,
 				57E85EA42091DDB200CEEFE7 /* RedViewController.swift */,
+				57DAD62420997AAB0047578C /* LoaderViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 				57E85EA820920F2B00CEEFE7 /* Router.swift */,
 				57E85EAC209334AD00CEEFE7 /* Steps.swift */,
 				5776D4AB2099408200F1399E /* State.swift */,
+				57DAD626209982860047578C /* Loader.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -173,8 +179,10 @@
 				57E85EA12091DAB500CEEFE7 /* GreenViewController.swift in Sources */,
 				57E85EA72091E8E000CEEFE7 /* Flow.swift in Sources */,
 				57E85EA920920F2B00CEEFE7 /* Router.swift in Sources */,
+				57DAD62520997AAB0047578C /* LoaderViewController.swift in Sources */,
 				57E85EA32091DD1900CEEFE7 /* BaseViewController.swift in Sources */,
 				57E85EAD209334AD00CEEFE7 /* Steps.swift in Sources */,
+				57DAD627209982860047578C /* Loader.swift in Sources */,
 				57E85E912091DA4600CEEFE7 /* BlueViewController.swift in Sources */,
 				57E85E8F2091DA4600CEEFE7 /* AppDelegate.swift in Sources */,
 			);
