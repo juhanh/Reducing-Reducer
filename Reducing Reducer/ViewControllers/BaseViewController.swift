@@ -1,7 +1,8 @@
 import UIKit
+import FlowKit
 
 class BaseViewController: UIViewController {
-    private let model: Model
+    private let model: RoutingModel
     private let bindings: Bindings
 
     private var button: UIButton = {
@@ -29,7 +30,7 @@ class BaseViewController: UIViewController {
         return t
     }()
 
-    init(model: Model, bindings: Bindings) {
+    init(model: RoutingModel, bindings: Bindings) {
         self.model = model
         self.bindings = bindings
         super.init(nibName: nil, bundle: nil)

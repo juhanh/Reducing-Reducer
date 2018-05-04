@@ -1,12 +1,5 @@
 import UIKit
-
-class GreenModel: Model {
-    let text: String
-
-    init(text: String) {
-        self.text = text
-    }
-}
+import FlowKit
 
 class GreenBindings: Bindings { }
 

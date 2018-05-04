@@ -1,16 +1,8 @@
 import Foundation
 import UIKit
+import FlowKit
 
-enum RoutingCommand {
-    case noop
-    case showLoader
-    case showBlue(model: Model, bindings: Bindings)
-    case showRed(model: Model, bindings: Bindings)
-    case showGreen(model: Model, bindings: Bindings)
-    case done(model: Model)
-}
-
-class Router {
+class RouterImpl: Router {
     private let navigationController: UINavigationController
     private var loader: LoaderViewController?
 
@@ -18,7 +10,7 @@ class Router {
         self.navigationController = navigationController
     }
 
-    func route(command: RoutingCommand) {
+    func route(_ command: RoutingCommand) {
         switch command {
         case .noop:
             return

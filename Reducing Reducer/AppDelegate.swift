@@ -1,4 +1,5 @@
 import UIKit
+import FlowKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,14 +12,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         navigationController = UINavigationController(rootViewController: UIViewController())
-        router = Router(navigationController: navigationController)
-        loader = Loader()
+        router = RouterImpl(navigationController: navigationController)
+        loader = LoaderImpl()
         reducer = Flow(router: router, loader: loader)
 
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
-        reducer.route(instruction: .start)
+        reducer.nextStep(.start)
 
         return true
     }

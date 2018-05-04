@@ -1,11 +1,4 @@
-struct State {
-    let start = "Hello!"
-    var blue: String?
-    var red: String?
-    var green: String?
-}
-
-extension State {
+extension FlowState {
     var startModel: BlueModel {
         return BlueModel(text: start)
     }
@@ -25,5 +18,29 @@ extension State {
             let red = red, !red.isEmpty,
             let green = green, !green.isEmpty else { return nil }
         return DoneModel(text: "Blue: \(blue), Red: \(red), Green: \(green)")
+    }
+}
+
+public class BlueModel: RoutingModel {
+    public let text: String
+
+    public init(text: String) {
+        self.text = text
+    }
+}
+
+public class RedModel: RoutingModel {
+    public let text: String
+
+    public init(text: String) {
+        self.text = text
+    }
+}
+
+public class GreenModel: RoutingModel {
+    public let text: String
+
+    public init(text: String) {
+        self.text = text
     }
 }
