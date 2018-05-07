@@ -12,8 +12,6 @@ class RouterImpl: Router {
 
     func route(_ command: RoutingCommand) {
         switch command {
-        case .noop:
-            return
         case .showLoader:
             loader = LoaderViewController()
             loader?.modalTransitionStyle = .crossDissolve

@@ -1,7 +1,6 @@
 import Foundation
 
 public enum RoutingCommand {
-    case noop
     case showLoader
     case showBlue(model: RoutingModel, bindings: Bindings)
     case showRed(model: RoutingModel, bindings: Bindings)

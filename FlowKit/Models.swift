@@ -1,5 +1,6 @@
 extension FlowState {
-    var startModel: BlueModel {
+    var startModel: BlueModel? {
+        guard let start = start else { return nil }
         return BlueModel(text: start)
     }
 
@@ -41,6 +42,14 @@ public class GreenModel: RoutingModel {
     public let text: String
 
     public init(text: String) {
+        self.text = text
+    }
+}
+
+class DoneModel: RoutingModel {
+    let text: String
+
+    init(text: String) {
         self.text = text
     }
 }

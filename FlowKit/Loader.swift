@@ -1,7 +1,7 @@
 import Foundation
 
 public enum LoadingCommand {
-    case load(model: RoutingModel, callback: (RoutingModel) -> ())
+    case load(model: RoutingModel, callback: (String) -> ())
 }
 
 public protocol Loader {
@@ -15,7 +15,7 @@ public class LoaderImpl: Loader {
         switch command {
         case let .load(model, callback):
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(3)) {
-                callback(model)
+                callback(model.text + "\nDone!")
             }
         }
     }
