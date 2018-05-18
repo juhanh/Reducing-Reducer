@@ -9,28 +9,34 @@ public enum FlowStep {
 }
 
 enum Action {
-    case sync(route: RoutingCommand)
-    case async(route: RoutingCommand, load: LoadingCommand)
+    case route(command: RoutingCommand)
+    case loadAsync(route: RoutingCommand, command: LoadingCommand)
+    case validate(command: ValidationCommand)
 }
 
 public class Flow {
-    private let router: Router
-    private let loader: Loader
+    public typealias Dependencies = (
+        router: Router,
+        loader: Loader,
+        validator: Validator
+    )
+
+    private let dependencies: Dependencies
     private let calculator: StepCalculator
     private var state: FlowState
 
-    public convenience init(router: Router,
-                            loader: Loader) {
-        self.init(router: router, loader: loader, calculator: StepCalculatorImpl())
+    public convenience init(dependencies: Dependencies) {
+        self.init(state: FlowState(),
+                  dependencies: dependencies,
+                  calculator: StepCalculatorImpl())
     }
 
-    init(router: Router,
-         loader: Loader,
-         calculator: StepCalculator) {
-        self.router = router
-        self.loader = loader
+    init (state: FlowState,
+          dependencies: Dependencies,
+          calculator: StepCalculator) {
+        self.state = state
+        self.dependencies = dependencies
         self.calculator = calculator
-        self.state = FlowState()
     }
 
     public func nextStep() {
@@ -41,29 +47,31 @@ public class Flow {
     private func processNextStep(_ step: FlowStep) {
         switch step {
         case .start:
-            processStep(StartStep())
+            processStep(StartStep.self)
         case .blue:
-            processStep(BlueStep())
+            processStep(BlueStep.self)
         case .red:
-            processStep(RedStep())
+            processStep(RedStep.self)
         case .green:
-            processStep(GreenStep())
+            processStep(GreenStep.self)
         case .finish:
-            processStep(DoneStep())
+            processStep(DoneStep.self)
         }
     }
 
-    private func processStep<T>(_ : T) where T: Step {
-        let result = T.process(state as! T.StepState, processingEndCallback: { [weak self] newState in
-            self?.state = newState as! FlowState
+    private func processStep<T: Step>(_ stepType: T.Type) {
+        let result = stepType.process(state as! T.StepState, completion: { [weak self] in
+            self?.state = $0 as! FlowState
             self?.nextStep()
         })
         switch result {
-        case let .async(route, load):
-            router.route(route)
-            loader.load(load)
-        case let .sync(route):
-            router.route(route)
+        case let .loadAsync(route, load):
+            dependencies.router.route(route)
+            dependencies.loader.load(load)
+        case let .route(route):
+            dependencies.router.route(route)
+        case let .validate(validate):
+            dependencies.validator.validate(validate)
         }
     }
 }

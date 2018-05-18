@@ -3,6 +3,8 @@ protocol StepCalculator {
 }
 
 class StepCalculatorImpl: StepCalculator {
+    public init() { }
+    
     func calculateNextStep(from state: FlowState) -> FlowStep {
         if state.isDoneFilled { return .finish }
         if state.isGreenFilled { return .green }

@@ -5,21 +5,24 @@ import FlowKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var navigationController: UINavigationController!
-    var router: Router!
-    var loader: Loader!
-    var reducer: Flow!
+    var flow: Flow!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         navigationController = UINavigationController(rootViewController: UIViewController())
-        router = RouterImpl(navigationController: navigationController)
-        loader = LoaderImpl()
-        reducer = Flow(router: router, loader: loader)
+        let router = RouterImpl(navigationController: navigationController)
+        let loader = LoaderImpl()
+        let validator = ValidatorImpl()
+        flow = Flow(dependencies: (
+            router: router,
+            loader: loader,
+            validator: validator
+        ))
 
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
-        reducer.nextStep()
+        flow.nextStep()
 
         return true
     }

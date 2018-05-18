@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		572515EC20AF87EC0070E322 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572515EB20AF87EC0070E322 /* Validator.swift */; };
 		57486714209C14B500A2C55B /* FlowKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 57486712209C14B500A2C55B /* FlowKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		57486717209C14B500A2C55B /* FlowKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57486710209C14B400A2C55B /* FlowKit.framework */; };
 		57486719209C14B500A2C55B /* FlowKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 57486710209C14B400A2C55B /* FlowKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		572515EB20AF87EC0070E322 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		57486710209C14B400A2C55B /* FlowKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlowKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57486712209C14B500A2C55B /* FlowKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlowKit.h; sourceTree = "<group>"; };
 		57486713209C14B500A2C55B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				57486721209C14DB00A2C55B /* Router.swift */,
 				57486725209C15CB00A2C55B /* Models.swift */,
 				57486729209FD6ED00A2C55B /* StepCalculator.swift */,
+				572515EB20AF87EC0070E322 /* Validator.swift */,
 			);
 			path = FlowKit;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				572515EC20AF87EC0070E322 /* Validator.swift in Sources */,
 				5748671F209C14C700A2C55B /* Steps.swift in Sources */,
 				57486720209C14C700A2C55B /* Flow.swift in Sources */,
 				5748672A209FD6ED00A2C55B /* StepCalculator.swift in Sources */,
