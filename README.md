@@ -4,7 +4,7 @@ Send Money transfer is created via several steps that are currently orchestrated
 This project is a proof-of-concept of the new Transfer Flow (this is what it is called on other platforms) architecture.
 
 This architecture is motivated by several points:
-- Most of ViewControllers taking part of Transfer Flow are aduringlso used in other places, hence ViewControllers should have no knowledge of Transfer Flow.
+- Most of ViewControllers taking part of Transfer Flow are also used in other places, hence ViewControllers should have no knowledge of Transfer Flow.
 - An engineer should have a simple way of understanding what are the Transfer Flow steps.
 - Only Transfer Flow should know and care about its internal state.
 - All components should be easily testable.
