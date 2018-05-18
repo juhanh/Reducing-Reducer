@@ -1,14 +1,21 @@
 import Foundation
 
 protocol Step {
-    associatedtype StepState
-    
-    static func process(_ inputState: StepState,
-                        completion: @escaping (StepState) -> ()) -> Action
+    static func shouldExecuteStep(_ state: FlowState) -> Bool
+    static func process(_ inputState: FlowState,
+                        completion: @escaping (FlowState) -> ()) -> Action
+}
+
+private extension FlowState {
+    var isStartFilled: Bool {
+        return !start.isNullOrEmpty
+    }
 }
 
 class StartStep: Step {
-    typealias StepState = FlowState
+    static func shouldExecuteStep(_ state: FlowState) -> Bool {
+        return !state.isStartFilled
+    }
     
     static func process(_ inputState: FlowState, completion: @escaping (FlowState) -> ()) -> Action {
         var mutableState = inputState
@@ -24,8 +31,16 @@ class StartStep: Step {
     }
 }
 
+private extension FlowState {
+    var isBlueFilled: Bool {
+        return !blue.isNullOrEmpty
+    }
+}
+
 class BlueStep: Step {
-    typealias StepState = FlowState
+    static func shouldExecuteStep(_ state: FlowState) -> Bool {
+        return !state.isBlueFilled
+    }
     
     static func process(_ inputState: FlowState, completion: @escaping (FlowState) -> ()) -> Action {
         let model = inputState.redModel!
@@ -40,8 +55,16 @@ class BlueStep: Step {
     }
 }
 
+private extension FlowState {
+    var isRedFilled: Bool {
+        return !red.isNullOrEmpty
+    }
+}
+
 class RedStep: Step {
-    typealias StepState = FlowState
+    static func shouldExecuteStep(_ state: FlowState) -> Bool {
+        return !state.isRedFilled
+    }
     
     static func process(_ inputState: FlowState, completion: @escaping (FlowState) -> ()) -> Action {
         let model = inputState.greenModel!
@@ -56,8 +79,16 @@ class RedStep: Step {
     }
 }
 
+private extension FlowState {
+    var isGreenFilled: Bool {
+        return !green.isNullOrEmpty
+    }
+}
+
 class GreenStep: Step {
-    typealias StepState = FlowState
+    static func shouldExecuteStep(_ state: FlowState) -> Bool {
+        return !state.isGreenFilled
+    }
     
     static func process(_ inputState: FlowState, completion: @escaping (FlowState) -> ()) -> Action {
         return .loadAsync(route: .showLoader, command: .load(model: inputState.greenModel!, callback: {
@@ -70,10 +101,24 @@ class GreenStep: Step {
     }
 }
 
+private extension FlowState {
+    var isDoneFilled: Bool {
+        return !done.isNullOrEmpty
+    }
+}
+
 class DoneStep: Step {
-    typealias StepState = FlowState
+    static func shouldExecuteStep(_ state: FlowState) -> Bool {
+        return !state.isDoneFilled
+    }
     
     static func process(_ inputState: FlowState, completion: @escaping (FlowState) -> ()) -> Action {
         return .route(command: .done(model: inputState.doneModel!))
+    }
+}
+
+extension Optional where Wrapped == String {
+    var isNullOrEmpty: Bool {
+        return self?.isEmpty ?? true
     }
 }

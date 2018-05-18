@@ -17,7 +17,6 @@
 		57486720209C14C700A2C55B /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85EA62091E8E000CEEFE7 /* Flow.swift */; };
 		57486722209C14DB00A2C55B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57486721209C14DB00A2C55B /* Router.swift */; };
 		57486726209C15CB00A2C55B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57486725209C15CB00A2C55B /* Models.swift */; };
-		5748672A209FD6ED00A2C55B /* StepCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57486729209FD6ED00A2C55B /* StepCalculator.swift */; };
 		57DAD62520997AAB0047578C /* LoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DAD62420997AAB0047578C /* LoaderViewController.swift */; };
 		57E85E8F2091DA4600CEEFE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85E8E2091DA4600CEEFE7 /* AppDelegate.swift */; };
 		57E85E912091DA4600CEEFE7 /* BlueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E85E902091DA4600CEEFE7 /* BlueViewController.swift */; };
@@ -60,7 +59,6 @@
 		57486713209C14B500A2C55B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57486721209C14DB00A2C55B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		57486725209C15CB00A2C55B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		57486729209FD6ED00A2C55B /* StepCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCalculator.swift; sourceTree = "<group>"; };
 		5776D4AB2099408200F1399E /* FlowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowState.swift; sourceTree = "<group>"; };
 		57DAD62420997AAB0047578C /* LoaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderViewController.swift; sourceTree = "<group>"; };
 		57DAD626209982860047578C /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				57486713209C14B500A2C55B /* Info.plist */,
 				57486721209C14DB00A2C55B /* Router.swift */,
 				57486725209C15CB00A2C55B /* Models.swift */,
-				57486729209FD6ED00A2C55B /* StepCalculator.swift */,
 				572515EB20AF87EC0070E322 /* Validator.swift */,
 			);
 			path = FlowKit;
@@ -280,7 +277,6 @@
 				572515EC20AF87EC0070E322 /* Validator.swift in Sources */,
 				5748671F209C14C700A2C55B /* Steps.swift in Sources */,
 				57486720209C14C700A2C55B /* Flow.swift in Sources */,
-				5748672A209FD6ED00A2C55B /* StepCalculator.swift in Sources */,
 				57486722209C14DB00A2C55B /* Router.swift in Sources */,
 				57486726209C15CB00A2C55B /* Models.swift in Sources */,
 				5748671D209C14C700A2C55B /* Loader.swift in Sources */,

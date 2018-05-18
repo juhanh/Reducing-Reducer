@@ -1,18 +1,18 @@
 import Foundation
 
-public enum FlowStep {
-    case start
-    case blue
-    case red
-    case green
-    case finish
-}
-
 enum Action {
     case route(command: RoutingCommand)
     case loadAsync(route: RoutingCommand, command: LoadingCommand)
     case validate(command: ValidationCommand)
 }
+
+// This decalre the ordered flow.
+// To add step, implement a Step and add it to its correct position
+fileprivate let steps: [Step.Type] = [StartStep.self,
+                                      BlueStep.self,
+                                      RedStep.self,
+                                      GreenStep.self,
+                                      DoneStep.self]
 
 public class Flow {
     public typealias Dependencies = (
@@ -22,46 +22,30 @@ public class Flow {
     )
 
     private let dependencies: Dependencies
-    private let calculator: StepCalculator
     private var state: FlowState
 
     public convenience init(dependencies: Dependencies) {
         self.init(state: FlowState(),
-                  dependencies: dependencies,
-                  calculator: StepCalculatorImpl())
+                  dependencies: dependencies)
     }
 
     init (state: FlowState,
-          dependencies: Dependencies,
-          calculator: StepCalculator) {
+          dependencies: Dependencies) {
         self.state = state
         self.dependencies = dependencies
-        self.calculator = calculator
     }
 
     public func nextStep() {
-        let step = calculator.calculateNextStep(from: state)
-        processNextStep(step)
-    }
-
-    private func processNextStep(_ step: FlowStep) {
-        switch step {
-        case .start:
-            processStep(StartStep.self)
-        case .blue:
-            processStep(BlueStep.self)
-        case .red:
-            processStep(RedStep.self)
-        case .green:
-            processStep(GreenStep.self)
-        case .finish:
-            processStep(DoneStep.self)
+        guard let step = steps.first(where: { $0.shouldExecuteStep(state) }) else {
+            // Handle error state in real world
+            return
         }
+        processStep(step)
     }
 
-    private func processStep<T: Step>(_ stepType: T.Type) {
-        let result = stepType.process(state as! T.StepState, completion: { [weak self] in
-            self?.state = $0 as! FlowState
+    private func processStep(_ stepType: Step.Type) {
+        let result = stepType.process(state, completion: { [weak self] in
+            self?.state = $0
             self?.nextStep()
         })
         switch result {
